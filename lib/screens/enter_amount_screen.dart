@@ -22,6 +22,7 @@ class _WaterAmountState extends State<WaterAmount> {
   void dispose() {
     _text.dispose();
     super.dispose();
+ 
   }
 
   void initState() {
@@ -36,14 +37,12 @@ class _WaterAmountState extends State<WaterAmount> {
       setState(() {});
     } else {
       int i = _text.text.length - 1;
-      if(_text.text[i] != "0" || _text.text[0] != "0" )
-      {
-      enable = true;
-      setState(() {});
-      }
-      else{
-      enable = false;
-      setState(() {});
+      if (_text.text[i] != "0" || _text.text[0] != "0") {
+        enable = true;
+        setState(() {});
+      } else {
+        enable = false;
+        setState(() {});
       }
     }
   }
@@ -68,55 +67,111 @@ class _WaterAmountState extends State<WaterAmount> {
       _onPressed = null;
     }
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      //top appbar where arrow is placed
-      appBar: AppBar(
-        leading: BackButton(
-            color: greyBlue,
-            key: Key('back-btn'),
-            onPressed: () {
-              //on press goes to previous screen
-              Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChooseDeviceScreen()));
-              setState(() {});
-            }),
-        //color of the appbar
-        backgroundColor: Colors.transparent,
-        //removes shadow
-        bottomOpacity: 0.0,
-        elevation: 0.0,
-      ),
-      //main body
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          //Main text question
-          Text(
-            "How many cups would you like?",
-            key: Key('amountTitle-text'),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Center(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          //top appbar where arrow is placed
+          appBar: AppBar(
+            leading: BackButton(
+                color: greyBlue,
+                key: Key('back-btn'),
+                onPressed: () {
+                  //on press goes to previous screen
+                  Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChooseDeviceScreen()));
+                  setState(() {});
+                }),
+            //color of the appbar
+            backgroundColor: Colors.transparent,
+            //removes shadow
+            bottomOpacity: 0.0,
+            elevation: 0.0,
           ),
-          //number textfield
-          TextField(
-              controller: _text,
-              key: Key("cups-textfield"),
-              keyboardType: TextInputType.numberWithOptions(
-                  decimal: false, signed: false),
-              inputFormatters: [
-                WhitelistingTextInputFormatter.digitsOnly,
-                BlacklistingTextInputFormatter.singleLineFormatter
+          //main body
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                //Main text question
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+                  child: Text(
+                    "How many cups would you like?",
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        color: greyBlue,
+                        fontSize: 18,
+                        
+                        letterSpacing: 1),
+                    key: Key('amountTitle-text'),
+                  ),
+                ),
+                //number textfield
+                TextField(
+                    controller: _text,
+                    key: Key("cups-textfield"),
+                    keyboardType: TextInputType.numberWithOptions(
+                        decimal: true, signed: false),
+                    inputFormatters: [
+                      WhitelistingTextInputFormatter.digitsOnly,
+                      BlacklistingTextInputFormatter.singleLineFormatter
+                    ],
+                    style: new TextStyle(color: greyBlue),
+                    decoration: new InputDecoration(
+
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: greyBlue),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: greyBlue),
+                          borderRadius: BorderRadius.circular(10)),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: greyBlue),
+                          borderRadius: BorderRadius.circular(10)),
+
+                    )),
+                Padding(
+                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+                    child: Container(
+                      height: 50,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: FlatButton(
+                        key: Key('continue-btn'),
+                        disabledColor: litGrey,
+                        color: greyBlue,
+                        disabledTextColor: drkGrey,
+                        textColor: eggWhite,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                                color: Color(0),
+                                width: 1,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.circular(50)),
+                        onPressed: _onPressed,
+                        child: Text("Continue",
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 14,
+                                letterSpacing: 2)),
+                      ),
+                    ))
               ],
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-              )),
-          FlatButton(
-            key: Key('continue-btn'),
-            onPressed: _onPressed,
-            child: Text("Continue"),
-          )
-        ],
+            ),
+          ),
+        ),
       ),
     );
   }

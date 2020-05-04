@@ -1,9 +1,11 @@
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
-
+import 'dart:io';
 void main() {
   group('Homebrew App - ', () {
     FlutterDriver driver;
+    final timeoutV = Timeout.factor(
+    int.tryParse(Platform.environment["CMTV"] ?? '1'));
 
     // Connect to the Flutter driver before running any tests.
     setUpAll(() async {
@@ -25,6 +27,7 @@ void main() {
 /// It test that the app fully works
 ///
 ///
+group("acceptance Tests: ", (){
     test('Given that french press is selceted and i want to make 5 cups then i should see the recommended setting and should be taken back home when done', () async {
       //expect to see HOMEBREW
         final homebrewtextFinder = find.byValueKey('homebrew-text');
@@ -32,7 +35,7 @@ void main() {
 
       //expect to see "what coffee maker are you using"
         final coffeeMakerTextFinder = find.byValueKey('coffee-question-test');
-        //expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
+        expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
 
       //tap "french press"
         final frenchPressSelector = find.byValueKey('french-press-selector');
@@ -121,12 +124,15 @@ void main() {
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
        
     });
+},timeout: timeoutV);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///Tests for drip press that test:
 ///     -back button 
 ///     -continue button
 /// 
+group("User Test:", () {
+  
     test('Checks that continue button on coffee selector for drip press works ', () async {
    
       //expect to see "what coffee maker are you using"
@@ -255,7 +261,6 @@ void main() {
         final recommendTextFinder = find.byValueKey('recommended-text');
           expect(await driver.getText(recommendTextFinder), "Recommended");
       });
-  });
-
+  },timeout: timeoutV);
+});
 }
-
