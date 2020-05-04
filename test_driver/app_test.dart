@@ -74,7 +74,7 @@ group("acceptance Tests: ", (){
     
       //expect to see "What coffee maker are you using?"
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
-    });
+    }, timeout: timeoutV);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Acceptance test for the Drip Press
@@ -154,7 +154,7 @@ group("User Test:", () {
         await driver.tap(find.byTooltip('Back'));
         
 
-      });
+      }, timeout: timeoutV);
 
     test('Checks that continue button on ammount screen works for drip press ', () async {
         //expect to see HOMEBREW
@@ -189,7 +189,7 @@ group("User Test:", () {
         //tap "Done"
         final doneBtnFinder = find.byValueKey("done-btn");
         await driver.tap(doneBtnFinder);
-      });
+      }, timeout: timeoutV);
 
      
 
@@ -233,7 +233,7 @@ group("User Test:", () {
 
           //expect to be in the coffee selector page
           expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
-      });
+      }, timeout: timeoutV);
 
 
       test('Checks for improper inputs', () async {
@@ -260,7 +260,7 @@ group("User Test:", () {
          }
         final recommendTextFinder = find.byValueKey('recommended-text');
           expect(await driver.getText(recommendTextFinder), "Recommended");
-      });
+      }, timeout: timeoutV);
   },timeout: timeoutV);
 });
 }
