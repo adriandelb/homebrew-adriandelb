@@ -88,39 +88,44 @@ print("K");
 
     test('Given that drip machine is selceted and i want to make 5 cups then i should see the recommended setting and should be taken back home when done', () async {
         //expect to see HOMEBREW
-
+        print("test2");
       //expect to see "what coffee maker are you using"
         final coffeeMakerTextFinder = find.byValueKey('coffee-question-test');
         expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
-
+        print("A");
       //tap "french press"
         final dripPressSelector = find.byValueKey('drip-press-selector');
         await driver.tap(dripPressSelector);
+        print("b");
       //tap continue
         final contiueBtnFinder = find.byValueKey('continue-btn');
         await driver.tap(contiueBtnFinder);
+        print("C");
 
 
       //expect to see "How many cups would you like"
         final cupTextFinder = find.byValueKey('amountTitle-text');
         expect(await driver.getText(cupTextFinder), "How many cups would you like?");
+        print("D");
       //tap in the text filed
       //tap 5
       final cupTextField = find.byValueKey("cups-textfield");
       await driver.tap(cupTextField);
       await driver.enterText("5");
       await driver.tap(contiueBtnFinder);
-
+      print("E");
       //expect to see "Recommended"
       final recommendTextFinder = find.byValueKey('recommended-text');
       expect(await driver.getText(recommendTextFinder), "Recommended");
+      print("F");
       //expect to see "84 - course ground coffee"
       final coffeeAmountTextFinder = find.byValueKey("coffeeAmount-text");
       expect(await driver.getText(coffeeAmountTextFinder), "70g - medium ground coffee");
+      print("G");
         // expect to see "1183 - water"
       final waterAmountTextFinder = find.byValueKey("waterAmount-text");
       expect(await driver.getText(waterAmountTextFinder), "1183g - water");
-
+      print("H");
       //tap "Done"
       final doneBtnFinder = find.byValueKey("done-btn");
       await driver.tap(doneBtnFinder);

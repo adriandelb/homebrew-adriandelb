@@ -113,7 +113,7 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 45),
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 45),
               child: Container(
                 height: 45,
                   width: 300,
