@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'dart:io';
@@ -78,7 +78,7 @@ print("K");
   print("L");
       //expect to see "What coffee maker are you using?"
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
-    print("M");
+    print("K");
     }, timeout: timeoutV);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
