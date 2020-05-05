@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'dart:io';
@@ -30,24 +31,27 @@ void main() {
 group("acceptance Tests: ", (){
     test('Given that french press is selceted and i want to make 5 cups then i should see the recommended setting and should be taken back home when done', () async {
       //expect to see HOMEBREW
+      print("A");
         final homebrewtextFinder = find.byValueKey('homebrew-text');
+        print("B");
         expect(await driver.getText(homebrewtextFinder), "HOMEBREW");
-
+print("C");
       //expect to see "what coffee maker are you using"
         final coffeeMakerTextFinder = find.byValueKey('coffee-question-test');
+        print("D");
         expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
-
+print("E");
       //tap "french press"
         final frenchPressSelector = find.byValueKey('french-press-selector');
         await driver.tap(frenchPressSelector);
       //tap continue
         final contiueBtnFinder = find.byValueKey('continue-btn');
         await driver.tap(contiueBtnFinder);
-
+print("F");
       //expect to see "How many cups would you like"
        final cupTextFinder = find.byValueKey('amountTitle-text');
         expect(await driver.getText(cupTextFinder), "How many cups would you like?");
-    
+  print("G");
       //tap in the text field
         final cupTextField = find.byValueKey("cups-textfield");
         await driver.tap(cupTextField);
@@ -55,25 +59,26 @@ group("acceptance Tests: ", (){
       //Enter 5 into text field
         await driver.enterText("5");
         await driver.tap(contiueBtnFinder);
-
+print("H");
       //expect to see "Recommended"
       final recommendTextFinder = find.byValueKey('recommended-text');
       expect(await driver.getText(recommendTextFinder), "Recommended");
-
+print("I");
       //expect to see "84 - course ground coffee"
       final coffeeAmountTextFinder = find.byValueKey("coffeeAmount-text");
       expect(await driver.getText(coffeeAmountTextFinder), "84g - coarse ground coffee");
-
+print("J");
         // expect to see "1183 - water"
       final waterAmountTextFinder = find.byValueKey("waterAmount-text");
       expect(await driver.getText(waterAmountTextFinder), "1183g - water");
-
+print("K");
       //tap "Done"
       final doneBtnFinder = find.byValueKey('done-btn');
       await driver.tap(doneBtnFinder);
-    
+  print("L");
       //expect to see "What coffee maker are you using?"
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
+    print("M");
     }, timeout: timeoutV);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
