@@ -29,6 +29,7 @@ void main() {
 ///
 ///
 group("acceptance Tests: ", (){
+  /*
     test('Given that french press is selceted and i want to make 5 cups then i should see the recommended setting and should be taken back home when done', () async {
       //expect to see HOMEBREW
       print("A");
@@ -80,7 +81,7 @@ print("K");
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
     print("K");
     }, timeout: timeoutV);
-
+*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Acceptance test for the Drip Press
 /// It test that the app fully works under drip press
@@ -129,7 +130,7 @@ print("K");
       //tap "Done"
       final doneBtnFinder = find.byValueKey("done-btn");
       await driver.tap(doneBtnFinder);
-
+print("I");
       //expect to see "What coffee maker are you using?"
       expect(await driver.getText(coffeeMakerTextFinder), "What coffee maker are you using?");
        
