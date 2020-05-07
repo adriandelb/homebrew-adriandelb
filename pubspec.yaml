@@ -24,9 +24,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+
 dev_dependencies:
-  flutter_test:
+  flutter_driver:
     sdk: flutter
+  test: any
 
 
 # For information on the generic Dart part of this file, see the
@@ -39,6 +41,19 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: Kollektif
+      fonts:
+        - asset: fonts/kollektif.ttf
+
+    - family: Montserrat
+      fonts:
+        - asset: fonts/montserrat.ttf
+
+
+    - family: Norwester
+      fonts:
+        - asset: fonts/norwester.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
